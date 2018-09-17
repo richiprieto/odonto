@@ -4,6 +4,7 @@ Pathways for Odonto
 from opal.core import menus, pathway
 from odonto import models
 
+
 class PathwayUrlMixin(object):
 
     @classmethod
@@ -25,7 +26,6 @@ class PathwayUrlMixin(object):
 
         else:
             return base
-
 
 
 class AsMenuItemMixin(object):
@@ -68,7 +68,7 @@ class AsMenuItemMixin(object):
         return menus.MenuItem(**menuitem_kwargs)
 
 
-class OdontoPagePathway(pathway.PagePathway, PathwayUrlMixin, AsMenuItemMixin):
+class OdontoPagePathway(PathwayUrlMixin, AsMenuItemMixin, pathway.PagePathway):
     pass
 
 
@@ -92,7 +92,7 @@ class Fp17Pathway(OdontoPagePathway):
         pathway.Step(
             model=models.Demographics,
             display_name='Demographics',
-            ),
+        ),
         pathway.Step(
             model=models.Fp17DentalCareProvider,
             display_name="Care Provider",
